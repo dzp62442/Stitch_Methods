@@ -1,0 +1,50 @@
+language: cpp
+sudo: required
+
+matrix:
+  include:
+    - os: linux
+      dist: trusty
+      compiler: gcc
+
+addons:
+  apt:
+    packages:
+      - git
+      - mercurial
+      - cmake
+
+before_script: 
+  - cmake --version
+  
+  - sudo apt-get install build-essential
+  - sudo apt-get install cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
+  - sudo apt-get install python-dev python-numpy libtbb2 libtbb-dev libjpeg-dev libpng-dev libtiff-dev libjasper-dev libdc1394-22-dev
+  - mkdir ${TRAVIS_BUILD_DIR}/opencv
+  - cd ${TRAVIS_BUILD_DIR}/opencv
+  - wget https://github.com/opencv/opencv/archive/3.4.0.tar.gz -O opencv.tar.gz
+  - tar -xzvf opencv.tar.gz
+  - cd ${TRAVIS_BUILD_DIR}/opencv/opencv-3.4.0/
+  - mkdir ${TRAVIS_BUILD_DIR}/opencv/opencv-3.4.0/build
+  - cd ${TRAVIS_BUILD_DIR}/opencv/opencv-3.4.0/build/
+  - cmake . ${TRAVIS_BUILD_DIR}/opencv/opencv-3.4.0
+  - make -j4
+  - sudo make install
+
+  - cd ${TRAVIS_BUILD_DIR}/UglyMan_NISwGSP_Stitching/UglyMan_NISwGSP_Stitching/eigen/
+  - mkdir ${TRAVIS_BUILD_DIR}/UglyMan_NISwGSP_Stitching/UglyMan_NISwGSP_Stitching/eigen/build
+  - cd ${TRAVIS_BUILD_DIR}/UglyMan_NISwGSP_Stitching/UglyMan_NISwGSP_Stitching/eigen/build
+  - cmake ..
+  - make -j4
+  - sudo make install 
+
+  - cd ${TRAVIS_BUILD_DIR}/UglyMan_NISwGSP_Stitching/UglyMan_NISwGSP_Stitching/vlfeat-0.9.20/
+  - make -j4
+
+  - mkdir ${TRAVIS_BUILD_DIR}/UglyMan_NISwGSP_Stitching/UglyMan_NISwGSP_Stitching/build
+  - cd ${TRAVIS_BUILD_DIR}/UglyMan_NISwGSP_Stitching/UglyMan_NISwGSP_Stitching/build
+  - cmake -D VLFEAT_LIBRARY=${TRAVIS_BUILD_DIR}/UglyMan_NISwGSP_Stitching/UglyMan_NISwGSP_Stitching/vlfeat-0.9.20/bin/glnxa64/libvl.so ..
+
+
+script:
+- make -j4 
