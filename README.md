@@ -1,4 +1,4 @@
-整理了一些经典图像拼接开源算法
+#### 整理了一些经典图像拼接开源算法
 
 [Image-Stitching-main](https://github.com/dut-media-lab/Image-Stitching)： Leveraging Line-point Consistence to Preserve Structures for Wide Parallax Image Stitching，官方 MATLAB 实现。
 
@@ -20,9 +20,9 @@
 
 [Single-perspective-warps](https://github.com/tlliao/Single-perspective-warps)： Single-Perspective Warps in Natural Image Stitching，官方 MATLAB 实现。已跑通，效果与 Leveraging 相似
 
+[GES-GSP-Stitching](https://github.com/flowerDuo/GES-GSP-Stitching)：Geometric Structure Preserving Warp for Natural Image Stitching，待运行
 
-
-结合线特征算法：
+#### 结合线特征算法：
 
 Line meets as-projective-as-possible image stitching with moving  DLT
 
@@ -39,8 +39,3 @@ Locally  warping-based image stitching by imposing line constraints
 Leveraging Line-Point Consistence To Preserve Structures for  Wide Parallax Image Stitching
 
 Image stitching by line-guided local warping with global  similarity constraint
-
-
-
-
-
